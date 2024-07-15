@@ -3,6 +3,11 @@ import Create from "./components/Create";
 import { firestore } from "./config/firebase";
 import { collection, getDocs } from "firebase/firestore";
 import { Link } from "react-router-dom";
+import Features from "./components/Features";
+import { FaHome } from "react-icons/fa";
+import { IoSunny } from "react-icons/io5";
+import { FaBuilding } from "react-icons/fa";
+import { MdPhotoCameraBack } from "react-icons/md";
 
 const App = () => {
   const fetchingData = async () => {
@@ -26,7 +31,7 @@ const App = () => {
         <img src="./1.jpg" alt="" className="rounded-xl " />
       </div>
 
-      <div className="flex items-center md:items-start  gap-5  md:h-[99vh] mb-20 ">
+      <div className="flex items-center md:items-start  gap-5  md:h-[99vh] mb-5 ">
         <div className="flex items-center md:items-start  flex-col gap-5 md:mt-36 md:ml-20  mt-6 text-center md:text-left ">
           <h1 className="text-4xl md:text-5xl font-bold w-[80%] md:w-[550px]">
             Buy, rent, or sell your property easily
@@ -62,8 +67,15 @@ const App = () => {
             </div>
           </div>
         </div>
-        <div id="map" className="relative h-[200px] hidden md:block">
-          <img src="./map.png" alt="" className="mt-10 h-[650px] w-[800px]" />
+        <div
+          id="map"
+          className="relative h-[200px] hidden md:block rounded-xl cursor-pointer"
+        >
+          <img
+            src="./map.png"
+            alt=""
+            className="mt-10 h-[650px] w-[800px] rounded"
+          />
           <div className="absolute left-10 top-20 hidden lg:block  ">
             <img src="./Property.png" alt="" className="rounded-xl h-[300px]" />
           </div>
@@ -77,8 +89,14 @@ const App = () => {
       </div>
 
       {/* second section  */}
-      <div>
-        <div>sdfsadfasdf</div>
+      <div className="flex flex-wrap ml-5 mr-5 gap-5 items-center justify-center ">
+        <Features url={<FaHome />} title="Find Your Dream Home" />
+        <Features url={<MdPhotoCameraBack />} title="Unlock Property Value" />
+        <Features url={<FaBuilding />} title="Effortless Property Management" />
+        <Features
+          url={<IoSunny />}
+          title="Smart Investment, Informed Decisions"
+        />
       </div>
 
       {/* <Create /> */}
