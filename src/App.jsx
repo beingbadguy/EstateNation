@@ -31,7 +31,7 @@ const App = () => {
         <img src="./1.jpg" alt="" className="rounded-xl " />
       </div>
 
-      <div className="flex items-center md:items-start  gap-5  md:h-[99vh] mb-5 ">
+      <div className="flex items-center md:items-start  gap-5  md:h-[99vh] mb-10 ">
         <div className="flex items-center md:items-start  flex-col gap-5 md:mt-36 md:ml-20  mt-6 text-center md:text-left ">
           <h1 className="text-4xl md:text-5xl font-bold w-[80%] md:w-[550px]">
             Buy, rent, or sell your property easily
@@ -43,25 +43,25 @@ const App = () => {
           <div className="flex justify-start items-center gap-7">
             <Link
               to={"/services"}
-              className="border-purple-500 border px-2 py-1 rounded-md"
+              className="border-purple-500 border px-2 py-2 rounded-md"
             >
               Learn More
             </Link>
-            <Link to={"/buy"} className="bg-purple-500 px-2 py-1 rounded-md">
+            <Link to={"/buy"} className="bg-purple-500 px-2 py-2 rounded-md">
               Browse Properties
             </Link>
           </div>
 
           <div className="flex gap-5 mt-0 md:mt-20 flex-col md:flex-row  w-[300px] sm:[100%] ">
-            <div className="bg-neutral-800 p-6">
+            <div className="bg-neutral-800 p-6 rounded-xl">
               <p className="text-2xl">200+</p>
               <p className="text-neutral-400">Happy Customers</p>
             </div>
-            <div className="bg-neutral-800 p-6">
+            <div className="bg-neutral-800 p-6 rounded-xl">
               <p className="text-2xl">10K+</p>
               <p className="text-neutral-400">Properties for clients</p>
             </div>
-            <div className="bg-neutral-800 p-6">
+            <div className="bg-neutral-800 p-6 rounded-xl">
               <p className="text-2xl">10+</p>
               <p className="text-neutral-400">Years of Experience</p>
             </div>
@@ -89,7 +89,7 @@ const App = () => {
       </div>
 
       {/* second section  */}
-      <div className="flex flex-wrap ml-5 mr-5 gap-5 items-center justify-center ">
+      <div className="flex flex-wrap ml-5 mr-5 gap-5 items-center justify-center  border-white shadow-2xl   p-4 rounded">
         <Features url={<FaHome />} title="Find Your Dream Home" />
         <Features url={<MdPhotoCameraBack />} title="Unlock Property Value" />
         <Features url={<FaBuilding />} title="Effortless Property Management" />

@@ -11,6 +11,8 @@ import Sell from "./pages/Sell.jsx";
 import Services from "./pages/Services.jsx";
 import Login from "./pages/Login.jsx";
 import Signup from "./pages/Sign.jsx";
+import Property from "./pages/Property.jsx";
+import ScrollToTop from "./components/ScrollTop.jsx";
 
 const router = createBrowserRouter([
   {
@@ -49,12 +51,18 @@ const router = createBrowserRouter([
         path: "/signup",
         element: <Signup />,
       },
+      {
+        path: "/property/:id",
+        element: <Property />,
+      },
     ],
   },
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <RouterProvider router={router}>
+      <ScrollToTop />
+    </RouterProvider>
   </React.StrictMode>
 );

@@ -5,12 +5,14 @@ import { HiHomeModern } from "react-icons/hi2";
 import { IoIosMenu } from "react-icons/io";
 import { FaTelegramPlane } from "react-icons/fa";
 import { FaMessage } from "react-icons/fa6";
+import ScrollToTop from "../components/ScrollTop";
 
 const Layout = () => {
   const [cross, setCross] = useState(true);
   const [menu, setMenu] = useState(false);
   return (
     <div className="min-h-[87vh]">
+      <ScrollToTop />
       <div>
         <div
           className={`${
@@ -18,7 +20,9 @@ const Layout = () => {
           } bg-black text-sm md:text-lg text-white  gap-2 items-center justify-center p-3 `}
         >
           <p>✨Discover Your Dream Property with EstateNation</p>
-          <p className="underline cursor-pointer hidden sm:flex">Learn More</p>
+          <p className="underline cursor-pointer hidden sm:flex">
+            <Link to={"/about"}>Learn More </Link>
+          </p>
           <div className="absolute right-0 pr-4">
             <IoIosClose
               className="rounded-[100%]  cursor-pointer text-lg sm:text-xl md:text-2xl"
@@ -156,12 +160,12 @@ const Layout = () => {
         </div>
       </div>
       <Outlet />
-      <div className="flex p-10 md:items-center justify-start md:justify-center flex-col md:flex-row md:p-8  gap-4 pb-5">
+      <div className="flex p-5 md:items-center justify-start md:justify-center flex-col md:flex-row md:p-8  gap-4 pb-5">
         <div className=" md:w-[80%]">
           <h3 className="text-2xl font-bold text-white">
             Start Your Real Estate Journey Today
           </h3>
-          <p className=" w-[100%] md:w-[70%] font-semibold text-neutral-400 mt-3">
+          <p className=" w-[100%] md:w-[70%]  text-neutral-400 mt-3">
             Your dream property is just a click away. Whether you're looking for
             a new home, a strategic investment, or expert real estate advice,
             Estatein is here to assist you every step of the way. Take the first
@@ -187,7 +191,7 @@ const Layout = () => {
               <FaMessage />
               <input
                 type="email"
-                className="p-1 font-bold"
+                className="px-2 font-bold outline-none"
                 placeholder="Enter your email "
               />
               <FaTelegramPlane />
