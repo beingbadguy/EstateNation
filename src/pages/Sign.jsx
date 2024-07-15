@@ -13,12 +13,14 @@ const Sign = () => {
   };
   console.log(user);
   return (
-    <div className="min-h-[81vh] bg-slate-50 text-white font-bold flex items-center justify-center mt-3">
+    <div className="min-h-[81vh] bg-slate-50 text-white  flex items-center justify-center mt-3">
       <div>
         <form className="flex flex-col p-4 gap-3">
           <div className="text-center ">
-            <h1 className="text-black">Welcome To the EstateNation</h1>
-            <p className="text-neutral-500">
+            <h1 className="text-black font-bold">
+              Welcome To the EstateNation
+            </h1>
+            <p className="text-neutral-500 font-semibold">
               We're a team that guides each other.
             </p>
           </div>
@@ -53,7 +55,7 @@ const Sign = () => {
             />
           </div>
           <div className="flex flex-col">
-            <label className="text-black">  
+            <label className="text-black">
               Password <span className="text-red-500">*</span>
             </label>
             <input

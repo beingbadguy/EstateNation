@@ -27,7 +27,6 @@ const Buy = () => {
         id: doc.id,
         ...doc.data(),
       }));
-      // console.log(properties);
       setProperties(properties);
     } catch (error) {
       console.log(error.message);

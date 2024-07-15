@@ -35,7 +35,7 @@ const Layout = () => {
             />
           </div>
         </div>
-        <div className=" flex items-center justify-between mt-4  px-6 text-black">
+        <div className=" flex items-center justify-between py-4  px-6  text-black bg-slate-100 ">
           {/* logo */}
           <div className="flex items-center gap-2 ">
             <HiHomeModern className="text-purple-500" />

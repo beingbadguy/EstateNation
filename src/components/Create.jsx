@@ -13,7 +13,8 @@ const Create = () => {
     mobile: "",
     email: "",
   });
-  const [image, setImage] = useState(null);
+  const [images, setImages] = useState([]);
+  const [hide, setHide] = useState();
   const [load, setLoading] = useState("Submit");
 
   const changeHandler = (e) => {
@@ -24,10 +25,14 @@ const Create = () => {
   const submitHandler = (e) => {
     e.preventDefault();
 
-    if (!image) {
-      alert("Please select an image");
+    if (images.length < 1 || images.length > 4) {
+      alert("Please select an image that should be between 1 and 4");
       return;
     }
+    if (formData.mobile.length < 10 || formData.mobile.length > 10) {
+      alert("Please enter a valid 10-digit mobile number");
+    }
+
     if (
       formData.name &&
       formData.bathrooms &&
@@ -35,24 +40,30 @@ const Create = () => {
       formData.dimension &&
       formData.state &&
       formData.price &&
-      image &&
+      images &&
       formData.mobile &&
       formData.email
     ) {
-      uploadData(image);
+      uploadData(images);
     } else {
       alert("Enter all the required fields");
     }
   };
 
-  const uploadData = async (image) => {
+  const uploadData = async (images) => {
+    const promises = Array.from(images).map(async (image) => {
+      const storageRef = ref(storage, `propertyImage/${image.name}`);
+      return uploadBytes(storageRef, image).then(async (snapshot) => {
+        return getDownloadURL(snapshot.ref);
+      });
+    });
+
     try {
       setLoading("Loading...");
-      const storageRef = ref(storage, `propertyImage/${image.name}`);
-      const snapshot = await uploadBytes(storageRef, image);
-      const url = await getDownloadURL(snapshot.ref);
+      const downloadURLs = await Promise.all(promises);
+
       await addDoc(collection(firestore, "properties"), {
-        img_url: url,
+        img_url: downloadURLs,
         name: formData.name,
         bathrooms: formData.bathrooms,
         bedrooms: formData.bedrooms,
@@ -79,7 +90,7 @@ const Create = () => {
     }
   };
 
-  //   console.log(formData, image);
+  console.log(images);
   return (
     <div className=" pl-10 pr-10   rounded">
       <form
@@ -91,10 +102,11 @@ const Create = () => {
             Property Image <span className="text-red-400">*</span>{" "}
           </label>
           <input
+            multiple
             type="file"
             className="bg-white text-black w-[220px] p-1 rounded-md"
             onChange={(e) => {
-              setImage(e.target.files[0]);
+              setImages([...e.target.files]);
             }}
             accept="jpg,png,jpeg"
           />

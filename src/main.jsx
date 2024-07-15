@@ -13,6 +13,7 @@ import Login from "./pages/Login.jsx";
 import Signup from "./pages/Sign.jsx";
 import Property from "./pages/Property.jsx";
 import ScrollToTop from "./components/ScrollTop.jsx";
+import AuthProvider from "./context/AuthContext.jsx";
 
 const router = createBrowserRouter([
   {
@@ -61,8 +62,10 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <RouterProvider router={router}>
-      <ScrollToTop />
-    </RouterProvider>
+    <AuthProvider>
+      <RouterProvider router={router}>
+        <ScrollToTop />
+      </RouterProvider>
+    </AuthProvider>
   </React.StrictMode>
 );

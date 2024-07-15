@@ -92,7 +92,7 @@ const App = () => {
           <img
             src="./map.png"
             alt=""
-            className="mt-10 h-[650px] w-[800px] rounded"
+            className="mt-0 h-[650px] w-[800px] rounded"
           />
           <div className="absolute left-10 top-20 hidden lg:block  ">
             <img src="./Property.png" alt="" className="rounded-xl h-[300px]" />

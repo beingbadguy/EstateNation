@@ -7,7 +7,6 @@ const Sell = () => {
   return (
     <div className="min-h-[81vh] text-black">
       <div className="text-black m-10 ">
-        {/* <GiBrightExplosion className="text-yellow-300 my-2 text-2xl" /> */}
         <h2 className="text-4xl font-bold">Let's Make it Happen 😍</h2>
         <p className="text-neutral-500 font-semibold w-[90%] sm:w-[60%] mt-3">
           Ready to take the first step toward your dream property? Fill out the
