@@ -57,7 +57,7 @@ const Buy = () => {
         <input
           type="text"
           className=" p-3 text-black w-[90%] font-bold rounded outline-none"
-          placeholder="Enter State or City"
+          placeholder="Enter State or City (e.g mumbai)"
           value={search}
           onChange={(e) => {
             setSearch(e.target.value.toLowerCase());
@@ -72,7 +72,7 @@ const Buy = () => {
               // console.log(NewfilterdData);
               setFilteredData(NewfilterdData);
               NewfilterdData < 1
-                ? setError("No properties found in this state.")
+                ? setError("No properties found in this state or city.")
                 : setError("");
             }
             setSearch("");
@@ -84,7 +84,7 @@ const Buy = () => {
 
         {filteredData && filteredData.length >= 1 ? (
           <p className="ml-8 font-bold mt-10 text-green-300">
-            Your Search Result :
+            {filteredData.length} properties found.
           </p>
         ) : (
           ""
@@ -135,6 +135,7 @@ const Buy = () => {
             ))}
         </div>
       </div>
+
       <div className="ml-8 mt-8">
         <h2 className="text-3xl font-bold">
           Discover a World of Possibilities 🔥

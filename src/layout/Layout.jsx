@@ -17,7 +17,7 @@ const Layout = () => {
         <div
           className={`${
             cross ? "flex" : "hidden"
-          } bg-black text-sm md:text-lg text-white  gap-2 items-center justify-center p-3 `}
+          } bg-black  md:text-lg text-white  gap-2 items-center justify-center p-3 `}
         >
           <p>✨Discover Your Dream Property with EstateNation</p>
           <p className="underline cursor-pointer hidden sm:flex">
@@ -43,7 +43,7 @@ const Layout = () => {
 
           {/* menu bar  */}
           <div
-            className={`md:flex md:items-center md:justify-between gap-10 bg-black md:bg-transparent min-h-[99vh] p-20  md:p-0 md:min-h-0  absolute md:static top-0 left-0 translate-x-[-100%] transition-all duration-500   ${
+            className={`md:flex md:items-center md:justify-between gap-10  bg-black md:bg-transparent min-h-[99vh] p-20  md:p-0 md:min-h-0  absolute md:static top-0 left-0 translate-x-[-100%] transition-all duration-500 z-[999]  ${
               menu
                 ? "translate-x-[0%] md:translate-x-0"
                 : "translate-x-[-100%] md:translate-x-0"
@@ -128,7 +128,7 @@ const Layout = () => {
             </div>
 
             {/* login signup */}
-            <div className="flex  w-[200px]  mt-10  text-xl md:text-sm md:mt-0 items-center gap-4">
+            <div className="flex  w-[200px]  mt-10  text-md md:mt-0 items-center gap-4">
               <Link
                 to={"/login"}
                 className="bg-purple-500 px-2 py-1 rounded-md"
@@ -159,10 +159,16 @@ const Layout = () => {
           </div>
         </div>
       </div>
+
+
+      {/* outlet  */}
       <Outlet />
+      {/* outlet  */} 
+
+
       <div className="flex p-5 md:items-center justify-start md:justify-center flex-col md:flex-row md:p-8  gap-4 pb-5">
         <div className=" md:w-[80%]">
-          <h3 className="text-2xl font-bold text-white">
+          <h3 className="text-3xl font-bold text-white">
             Start Your Real Estate Journey Today
           </h3>
           <p className=" w-[100%] md:w-[70%]  text-neutral-400 mt-3">
@@ -225,7 +231,7 @@ const Layout = () => {
             </ul>
           </div>
         </div>
-        <div className="flex  p-3 gap-6 text-sm bg-black">
+        <div className="flex  p-3 gap-6  bg-black">
           <p>@2024 EstateNation.</p>
           <p className="hidden md:block">All Rights Reserved.</p>
           <p className="hidden md:block">Terms & Conditions</p>
