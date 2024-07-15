@@ -99,7 +99,7 @@ const Create = () => {
       >
         <div className="flex flex-col font-semibold gap-1">
           <label className="text-white">
-            Property Image <span className="text-red-400">*</span>{" "}
+            Property Image (max 4) <span className="text-red-400">*</span>{" "}
           </label>
           <input
             multiple
@@ -113,13 +113,13 @@ const Create = () => {
         </div>
         <div className="flex flex-col font-semibold gap-1 ">
           <label className="text-white">
-            Property Name <span className="text-red-400">*</span>{" "}
+            Property Name  <span className="text-red-400">*</span>{" "}
           </label>
           <input
             type="text"
             name="name"
             value={formData.name}
-            className="bg-white text-black p-2 w-[290px] rounded-md"
+            className="bg-white text-black p-2 w-[200px] md:w-[290px] rounded-md"
             placeholder="Avenue mansion"
             onChange={(e) => {
               changeHandler(e);
@@ -135,7 +135,7 @@ const Create = () => {
             type="text"
             name="bathrooms"
             value={formData.bathrooms}
-            className="bg-white text-black p-2 w-[290px] rounded-md"
+            className="bg-white text-black p-2 w-[200px] md:w-[290px] rounded-md"
             placeholder="2"
             onChange={(e) => {
               changeHandler(e);
@@ -150,7 +150,7 @@ const Create = () => {
             type="text"
             name="bedrooms"
             value={formData.bedrooms}
-            className="bg-white text-black p-2 w-[290px] rounded-md"
+            className="bg-white text-black p-2 w-[200px] md:w-[290px] rounded-md"
             placeholder="5"
             onChange={(e) => {
               changeHandler(e);
@@ -165,7 +165,7 @@ const Create = () => {
             type="text"
             name="dimension"
             value={formData.dimension}
-            className="bg-white text-black p-2 w-[290px] rounded-md"
+            className="bg-white text-black p-2 w-[200px] md:w-[290px] rounded-md"
             placeholder="25 X 30"
             onChange={(e) => {
               changeHandler(e);
@@ -180,7 +180,7 @@ const Create = () => {
             type="number"
             name="price"
             value={formData.price}
-            className="bg-white text-black p-2 w-[290px] rounded-md"
+            className="bg-white text-black p-2 w-[200px] md:w-[290px] rounded-md"
             placeholder="40k"
             onChange={(e) => {
               changeHandler(e);
@@ -195,7 +195,7 @@ const Create = () => {
             type="text"
             name="state"
             value={formData.state}
-            className="bg-white text-black p-2 w-[290px] rounded-md"
+            className="bg-white text-black p-2 w-[200px] md:w-[290px] rounded-md"
             placeholder="Noida"
             onChange={(e) => {
               changeHandler(e);
@@ -210,7 +210,7 @@ const Create = () => {
             type="number"
             name="mobile"
             value={formData.mobile}
-            className="bg-white text-black p-2 w-[290px] rounded-md"
+            className="bg-white text-black p-2 w-[200px] md:w-[290px]  rounded-md"
             placeholder="Number"
             onChange={(e) => {
               changeHandler(e);
@@ -225,14 +225,14 @@ const Create = () => {
             type="email"
             name="email"
             value={formData.email}
-            className="bg-white text-black p-2 w-[290px] rounded-md"
+            className="bg-white text-black p-2 w-[200px] md:w-[290px] rounded-md"
             placeholder="Email"
             onChange={(e) => {
               changeHandler(e);
             }}
           />
         </div>
-        <button className="bg-purple-500 text-white p-2 mt-7 w-[200px] rounded-md">
+        <button className="bg-purple-500 text-white p-2 mt-7 w-[200px] md:w-[290px] rounded-md">
           {load}
         </button>
       </form>

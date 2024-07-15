@@ -6,8 +6,8 @@ const Faq = ({ q, a }) => {
   return (
     <div
       className={` ${
-        faq ? "h-28" : "h-10 md:h-12 "
-      } flex flex-col duration-500 bg-purple-500 text-white p-2 overflow-hidden font-bold transition-all w-[390px] lg:w-[600px] cursor-pointer text-sm rounded md:text-lg`}
+        faq ? "h-28" : "h-8 md:h-10 "
+      } flex flex-col duration-500 bg-purple-500 text-white p-2 overflow-hidden font-bold transition-all w-[330px] lg:w-[600px] cursor-pointer text-sm rounded md:text-lg`}
     >
       <div
         className="flex items-start justify-between   "

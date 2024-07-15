@@ -101,7 +101,7 @@ const Property = () => {
 
             <div className="flex flex-col gap-2 md:gap-6">
               <h1 className="font-bold text-4xl ">{product.name}</h1>
-              <div className="flex flex-w gap-10 text-sm p-1">
+              <div className="flex flex-w gap-1 sm:gap-10 text-sm p-1 ">
                 <div className="text-white flex items-center text-md gap-2 bg-blue-800  px-4 py-1 rounded ">
                   <GiBathtub />
                   {product.bathrooms}

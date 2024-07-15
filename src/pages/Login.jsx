@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { googleProvider } from "../config/firebase";
 import { auth } from "../config/firebase";
 import { AuthContext } from "../context/AuthContext";
+import { HiHomeModern } from "react-icons/hi2";
 
 const Login = () => {
   const { isAuth, setIsAuth } = useContext(AuthContext);
@@ -34,7 +35,8 @@ const Login = () => {
     <div className="min-h-[81vh] bg-slate-50 text-white  flex items-center justify-center mt-3">
       <div className="flex items-center flex-col">
         <form className="flex flex-col p-4 gap-3">
-          <div className="text-center ">
+          <div className="text-center flex flex-col justify-center items-center ">
+            <HiHomeModern className="text-purple-500 text-4xl text-center" />
             <h1 className="text-black font-bold">
               Welcome To the EstateNation
             </h1>
@@ -54,7 +56,7 @@ const Login = () => {
               onChange={(e) => {
                 userFormHandler(e);
               }}
-              className="bg-white px-2 py-2 border border-black text-black w-[400px]  rounded-md "
+              className="bg-white px-2 py-2 border border-black text-black w-[300px] md:w-[400px]  rounded-md "
               placeholder="demo@gmail.com"
             />
           </div>
@@ -69,11 +71,11 @@ const Login = () => {
               onChange={(e) => {
                 userFormHandler(e);
               }}
-              className="bg-white px-2 py-2 border border-black text-black w-[400px]  rounded-md "
+              className="bg-white px-2 py-2 border border-black text-black w-[300px] m:w-[400px]  rounded-md "
               placeholder="anonymous123"
             />
           </div>
-          <button className="bg-purple-500 px-2 py-2 border border-black text-white w-[400px] rounded-md">
+          <button className="bg-purple-500 px-2 py-2 border border-black text-white  w-[300px] m:w-[400px]  rounded-md">
             Login
           </button>
 
@@ -87,7 +89,7 @@ const Login = () => {
         <p className="text-black text-center">or</p>
         <div>
           <button
-            className="bg-white px-2 py-2 border border-black text-purple-500 w-[400px] rounded-md text-center cursor-pointer"
+            className="bg-white px-2 py-2 border border-black text-purple-500  w-[300px] m:w-[400px]  rounded-md text-center cursor-pointer"
             onClick={() => {
               handleGoogleSignIn();
             }}

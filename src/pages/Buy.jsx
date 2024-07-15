@@ -89,19 +89,19 @@ const Buy = () => {
           ""
         )}
 
-        <div className="flex flex-wrap items-center justify-center md:items-center md:justify-center md:gap-10 mt-4 gap-2  sm:mb-5">
+        <div className="flex flex-wrap items-center justify-center md:items-center md:justify-center md:gap-10 mt-4 gap-6  mb-20 sm:mb-15">
           {filteredData &&
             filteredData.map((item) => (
               <div key={item.id}>
                 <div
                   key={item.id}
-                  className="rounded-t-2xl w-[200px] sm:w-[250px] md:w-[300px] relative text-sm md:text-md "
+                  className="rounded-t-2xl h-[300px] w-[150px] sm:w-[290px] md:w-[300px] relative text-sm md:text-md mb-32 mt-10"
                 >
                   <div className="rounded-t-xl">
                     <img
                       src={item.img_url}
                       alt=""
-                      className="h-[300px] w-[530px] sm:w-[250px] md:w-[300px] rounded-t-xl"
+                      className="h-[300px] w-[150px] sm:w-[290px] md:w-[300px] rounded-t-xl"
                     />
                   </div>
                   <div className="bg-slate-200 text-black font-bold p-3 rounded-b-xl">
@@ -113,8 +113,8 @@ const Buy = () => {
                     <p>{item.state}</p>
                     <View id={item.id} />
 
-                    <hr className="font-bold text-red-600 h-2 border-purple-500 mt-2" />
-                    <div className="flex justify-between items-center mt-1">
+                    <hr className="font-bold text-red-600 h-2 border-purple-500 mt-2 hidden sm:block" />
+                    <div className="sm:flex justify-between items-center mt-1 hidden">
                       <div className="flex items-center text-md gap-2">
                         <GiBathtub />
                         {item.bathrooms}
@@ -150,27 +150,27 @@ const Buy = () => {
           <div key={item.id}>
             <div
               key={item.id}
-              className="rounded-t-2xl w-[200px] sm:w-[250px] md:w-[300px] relative text-sm md:text-md "
+              className="rounded-t-2xl w-[150px] sm:w-[290px] md:w-[300px] relative text-sm md:text-md "
             >
               <div className="rounded-t-xl">
                 <img
                   src={item.img_url}
                   alt=""
-                  className="h-[300px] w-[530px] sm:w-[250px] md:w-[300px] rounded-t-xl"
+                  className="h-[300px] w-[150px] sm:w-[290px] md:w-[300px] rounded-t-xl"
                 />
               </div>
               <div className="bg-slate-200 text-black font-bold p-3 rounded-b-xl">
-                <p className="text-lg">
+                <p className="text-sm sm:text-lg">
                   ${item.price}
                   <span className="text-neutral-500 text-sm">/month</span>
                 </p>
-                <p className="text-xl font-bold">{item.name}</p>
+                <p className="text-sm sm:text-xl font-bold">{item.name}</p>
                 <p>{item.state}</p>
 
                 <View id={item.id} />
 
-                <hr className="font-bold text-red-600 h-2 border-purple-500 mt-2" />
-                <div className="flex justify-between items-center mt-1">
+                <hr className="font-bold text-red-600 h-2 border-purple-500 mt-2 hidden sm:block" />
+                <div className=" justify-between items-center mt-1 hidden sm:flex">
                   <div className="flex items-center text-md gap-2">
                     <GiBathtub />
                     {item.bathrooms}

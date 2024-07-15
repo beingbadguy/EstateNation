@@ -125,12 +125,12 @@ const App = () => {
           through Estatein. Click "View" for more information.
         </p>
 
-        <div className="flex flex-wrap items-center justify-center md:items-center md:justify-center gap-2 md:gap-10 p-2 sm:p-10 mt-5">
+        <div className="flex flex-wrap items-center justify-center md:items-center md:justify-center gap-4 md:gap-10 p-2 sm:p-10 mt-5">
           {specData.map((item) => (
             <div key={item.id}>
               <div
                 key={item.id}
-                className="rounded-t-2xl w-[350px] sm:w-[250px] md:w-[300px] relative text-sm md:text-md "
+                className="rounded-t-2xl w-[300px] sm:w-[250px] md:w-[300px] relative text-sm md:text-md "
               >
                 <div className="rounded-t-xl">
                   <img
@@ -187,8 +187,8 @@ const App = () => {
       </div>
       {/* faq  */}
 
-      <div className="flex items-center justify-around mt-10 flex-col md:flex-row">
-        <div className=" md:block ">
+      <div className="flex items-center justify-center md:justify-around mt-10 flex-col md:flex-row">
+        <div className=" md:block ml-5 md:ml-0 ">
           <h1 className="text-3xl">Some Hot Burning Question?</h1>
         </div>
         <div className="ml-5 mr-5 my-5 flex flex-col gap-4">
