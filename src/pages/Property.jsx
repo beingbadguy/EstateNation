@@ -12,6 +12,7 @@ import { firestore } from "../config/firebase";
 import { collection, getDocs } from "firebase/firestore";
 import View from "../components/View";
 import { BsTextareaResize } from "react-icons/bs";
+import Rating from "../components/Rating";
 
 const Property = () => {
   const { id } = useParams();
@@ -104,6 +105,9 @@ const Property = () => {
               <div className="flex gap-2 items-center">
                 <CiMail />
                 <p> {product.email}</p>
+              </div>
+              <div>
+                <Rating />
               </div>
               <div className="bg-purple-500 text-white flex justify-center items-center font-bold p-2 gap-2 cursor-pointer rounded-xl">
                 <CiHeart className="text-2xl" />
