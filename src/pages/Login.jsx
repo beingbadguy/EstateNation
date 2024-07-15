@@ -27,8 +27,8 @@ const Login = () => {
   };
 
   return (
-    <div className="min-h-[81vh] bg-purple-50 text-white font-bold flex items-center justify-center mt-3">
-      <div>
+    <div className="min-h-[81vh] bg-slate-50 text-white font-bold flex items-center justify-center mt-3">
+      <div className="flex items-center flex-col">
         <form className="flex flex-col p-4 gap-3">
           <div className="text-center ">
             <h1 className="text-black">Welcome To the EstateNation</h1>
@@ -86,7 +86,7 @@ const Login = () => {
               handleGoogleSignIn();
             }}
           >
-            Login with Google
+            login with Google
           </button>
         </div>
       </div>

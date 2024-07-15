@@ -53,18 +53,17 @@ const Property = () => {
   useEffect(() => {
     productFetch();
   }, [id]);
-  // console.log(id);
   return (
-    <div className="text-white">
-      <div className="m-5 text-sm flex items-center  flex-row gap-2">
+    <div className="text-black">
+      <div className="m-5 text-sm flex items-center  flex-row gap-2 font-sans">
         <Link to="/" className=" ">
           Home
         </Link>
-        <MdArrowLeft />
+        <MdArrowLeft className="text-xl" />
         <Link to="/buy" className=" ">
           Buy
         </Link>
-        <MdArrowLeft />
+        <MdArrowLeft className="text-xl" />
         {product && product.name}
       </div>
       <div>
@@ -76,14 +75,14 @@ const Property = () => {
               className="md:w-[50%] h-[270px] md:h-[400px] rounded-xl object-cover"
             />
 
-            <div className="flex flex-col gap-4">
+            <div className="flex flex-col gap-4 ">
               <h1 className="font-bold text-4xl">{product.name}</h1>
               <div className="flex gap-10">
-                <div className="flex items-center text-md gap-2 bg-blue-800  px-4 py-1 rounded">
+                <div className="text-white flex items-center text-md gap-2 bg-blue-800  px-4 py-1 rounded">
                   <GiBathtub />
                   {product.bathrooms}
                 </div>
-                <div className="flex items-center text-md gap-2 bg-green-800  px-4 py-1 rounded">
+                <div className="text-white flex items-center text-md gap-2 bg-green-800  px-4 py-1 rounded">
                   <IoBedSharp />
                   <p>{product.bedrooms}</p>
                 </div>
@@ -106,7 +105,7 @@ const Property = () => {
                 <CiMail />
                 <p> {product.email}</p>
               </div>
-              <div className="bg-white text-black flex justify-center items-center font-bold p-2 gap-2 cursor-pointer rounded-xl">
+              <div className="bg-purple-500 text-white flex justify-center items-center font-bold p-2 gap-2 cursor-pointer rounded-xl">
                 <CiHeart className="text-2xl" />
                 <p>Add to Favourite</p>
               </div>

@@ -43,10 +43,10 @@ const Buy = () => {
   useEffect(() => {}, [setFilteredData]);
 
   return (
-    <div className="min-h-[81vh] text-white">
+    <div className="min-h-[81vh] text-black">
       <div className="ml-8 mt-8">
         <h2 className="text-3xl font-bold">Find Your Dream Properly ❤️</h2>
-        <p className="text-neutral-300  w-[90%] sm:w-[60%] mt-3">
+        <p className="text-neutral-600  w-[90%] sm:w-[60%] mt-3">
           Welcome to Estatein, where your dream property awaits in every corner
           of our beautiful world. Explore our curated selection of properties,
           each offering a unique story and a chance to redefine your life. With
@@ -56,7 +56,7 @@ const Buy = () => {
       <div className="mt-6 flex items-center gap-5 ml-[10%]  md:w-[80%] text-black rounded">
         <input
           type="text"
-          className=" p-3 text-black w-[90%] font-bold rounded outline-none"
+          className=" p-3 border-2 border-purple-500 text-black w-[90%] font-bold rounded-md outline-none"
           placeholder="Enter State or City (e.g mumbai)"
           value={search}
           onChange={(e) => {
@@ -83,14 +83,14 @@ const Buy = () => {
         <p className="ml-8 font-bold mt-10 text-red-500"> {error}</p>
 
         {filteredData && filteredData.length >= 1 ? (
-          <p className="ml-8 font-bold mt-10 text-green-300">
+          <p className="ml-8 font-bold mt-10 text-green-600">
             {filteredData.length} properties found.
           </p>
         ) : (
           ""
         )}
 
-        <div className="flex flex-wrap items-center justify-center md:items-center md:justify-center md:gap-10 mt-4 gap-2  sm:p-10">
+        <div className="flex flex-wrap items-center justify-center md:items-center md:justify-center md:gap-10 mt-4 gap-2  sm:mb-5">
           {filteredData &&
             filteredData.map((item) => (
               <div key={item.id}>
@@ -105,7 +105,7 @@ const Buy = () => {
                       className="h-[300px] w-[530px] sm:w-[250px] md:w-[300px] rounded-t-xl"
                     />
                   </div>
-                  <div className="bg-white text-black font-bold p-3 rounded-b-xl">
+                  <div className="bg-slate-200 text-black font-bold p-3 rounded-b-xl">
                     <p className="text-lg">
                       ${item.price}
                       <span className="text-neutral-500 text-sm">/month</span>
@@ -136,11 +136,11 @@ const Buy = () => {
         </div>
       </div>
 
-      <div className="ml-8 mt-8">
+      <div className="ml-8 mt-0">
         <h2 className="text-3xl font-bold">
           Discover a World of Possibilities 🔥
         </h2>
-        <p className="text-neutral-300  w-[90%] sm:w-[60%] mt-3">
+        <p className="text-neutral-600  w-[90%] sm:w-[60%] mt-3">
           Our portfolio of properties is as diverse as your dreams. Explore the
           following categories to find the perfect property that resonates with
           your vision of home
@@ -160,7 +160,7 @@ const Buy = () => {
                   className="h-[300px] w-[530px] sm:w-[250px] md:w-[300px] rounded-t-xl"
                 />
               </div>
-              <div className="bg-white text-black font-bold p-3 rounded-b-xl">
+              <div className="bg-slate-200 text-black font-bold p-3 rounded-b-xl">
                 <p className="text-lg">
                   ${item.price}
                   <span className="text-neutral-500 text-sm">/month</span>

@@ -13,7 +13,7 @@ const Sign = () => {
   };
   console.log(user);
   return (
-    <div className="min-h-[81vh] bg-purple-50 text-white font-bold flex items-center justify-center mt-3">
+    <div className="min-h-[81vh] bg-slate-50 text-white font-bold flex items-center justify-center mt-3">
       <div>
         <form className="flex flex-col p-4 gap-3">
           <div className="text-center ">

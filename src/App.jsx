@@ -40,7 +40,7 @@ const App = () => {
   });
 
   return (
-    <div className="text-white min-h-[85vh] ">
+    <div className="text-black min-h-[85vh] ">
       {/* first section  */}
       <div className=" md:hidden ml-10 mr-10 mt-10 ">
         <img src="./1.jpg" alt="" className="rounded-xl h-[350px] " />
@@ -51,34 +51,37 @@ const App = () => {
           <h1 className="text-3xl md:text-6xl font-bold w-[80%] md:w-[550px]">
             Buy, rent, or sell your property easily
           </h1>
-          <p className="text-xl md;w-[450px] text-neutral-400">
+          <p className="text-xl md;w-[450px] text-neutral-500">
             A great platform to buy, sell, or even rent your properties without
             any commisions.
           </p>
           <div className="flex justify-start items-center gap-7">
             <Link
               to={"/services"}
-              className="border-purple-500 border px-2 py-2 rounded-md "
+              className="border-purple-500 text-purple-500 border px-2 py-2 rounded-md "
             >
               Learn More
             </Link>
-            <Link to={"/buy"} className="bg-purple-500 px-2 py-2 rounded-md">
+            <Link
+              to={"/buy"}
+              className="bg-purple-500 text-white px-2 py-2 rounded-md"
+            >
               Browse Properties
             </Link>
           </div>
 
           <div className="flex gap-5 mt-0 md:mt-20 flex-col md:flex-row  w-[300px] sm:[100%] ">
-            <div className="bg-neutral-800 p-6 rounded-xl ">
+            <div className="bg-slate-100 p-6 rounded-xl ">
               <p className="text-3xl">200+</p>
-              <p className="text-neutral-400">Happy Customers</p>
+              <p className="text-black">Happy Customers</p>
             </div>
-            <div className="bg-neutral-800 p-6 rounded-xl">
+            <div className="bg-slate-100 p-6 rounded-xl">
               <p className="text-3xl">10K+</p>
-              <p className="text-neutral-400">Properties for clients</p>
+              <p className="text-black">Properties for clients</p>
             </div>
-            <div className="bg-neutral-800 p-6 rounded-xl">
+            <div className="bg-slate-100 p-6 rounded-xl">
               <p className="text-3xl">10+</p>
-              <p className="text-neutral-400">Years of Experience</p>
+              <p className="text-black">Years of Experience</p>
             </div>
           </div>
         </div>
@@ -104,7 +107,7 @@ const App = () => {
       </div>
 
       {/* second section  */}
-      <div className="flex flex-wrap ml-5 mr-5 gap-5 items-center justify-center  border-white shadow-2xl   p-4 rounded">
+      <div className="flex flex-wrap ml-5 mr-5 gap-5 items-center justify-center  border-white   p-4 rounded">
         <Features url={<FaHome />} title="Find Your Dream Home" />
         <Features url={<MdPhotoCameraBack />} title="Unlock Property Value" />
         <Features url={<FaBuilding />} title="Effortless Property Management" />
@@ -136,7 +139,7 @@ const App = () => {
                     className="h-[300px] w-[530px] sm:w-[250px] md:w-[300px] rounded-t-xl"
                   />
                 </div>
-                <div className="bg-white text-black font-bold p-3 rounded-b-xl">
+                <div className="bg-slate-200 text-black font-bold p-3 rounded-b-xl">
                   <p className="text-lg">
                     ${item.price}
                     <span className="text-neutral-500 text-sm">/month</span>
@@ -218,7 +221,7 @@ const App = () => {
 
       {/* <Create /> */}
       {/* <button
-        className="bg-red-600 text-white p-3"
+        className="bg-red-600 text-black p-3"
         onClick={() => {
           fetchingData();
         }}
