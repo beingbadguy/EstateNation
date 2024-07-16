@@ -16,6 +16,7 @@ import ScrollToTop from "./components/ScrollTop.jsx";
 import AuthProvider from "./context/AuthContext.jsx";
 import User from "./pages/User.jsx";
 import Fav from "./pages/Fav.jsx";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 const router = createBrowserRouter([
   {
@@ -75,6 +76,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
     <AuthProvider>
       <RouterProvider router={router}>
         <ScrollToTop />
+        <SpeedInsights />
       </RouterProvider>
     </AuthProvider>
   </React.StrictMode>
