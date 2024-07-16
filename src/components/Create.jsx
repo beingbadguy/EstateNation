@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import { firestore, storage } from "../config/firebase";
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { addDoc, collection } from "firebase/firestore";
-const Create = () => {
+const Create = ({ userData }) => {
+  console.log(userData);
   const [formData, setFormData] = useState({
     name: "",
     bathrooms: "",
@@ -41,8 +42,7 @@ const Create = () => {
       formData.state &&
       formData.price &&
       images &&
-      formData.mobile &&
-      formData.email
+      formData.mobile
     ) {
       uploadData(images);
     } else {
@@ -71,7 +71,8 @@ const Create = () => {
         state: formData.state,
         price: formData.price,
         mobile: formData.mobile,
-        email: formData.email,
+        email: userData.email,
+        user_id: userData.userId,
       });
       console.log("data uploaded successfully!");
       setLoading("submit");
@@ -113,7 +114,7 @@ const Create = () => {
         </div>
         <div className="flex flex-col font-semibold gap-1 ">
           <label className="text-white">
-            Property Name  <span className="text-red-400">*</span>{" "}
+            Property Name <span className="text-red-400">*</span>{" "}
           </label>
           <input
             type="text"

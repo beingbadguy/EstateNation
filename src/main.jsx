@@ -14,6 +14,8 @@ import Signup from "./pages/Sign.jsx";
 import Property from "./pages/Property.jsx";
 import ScrollToTop from "./components/ScrollTop.jsx";
 import AuthProvider from "./context/AuthContext.jsx";
+import User from "./pages/User.jsx";
+import Fav from "./pages/Fav.jsx";
 
 const router = createBrowserRouter([
   {
@@ -55,6 +57,14 @@ const router = createBrowserRouter([
       {
         path: "/property/:id",
         element: <Property />,
+      },
+      {
+        path: "/user",
+        element: <User />,
+      },
+      {
+        path: "/favourites",
+        element: <Fav />,
       },
     ],
   },

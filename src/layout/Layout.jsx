@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Link, NavLink, Outlet } from "react-router-dom";
 import { IoIosClose } from "react-icons/io";
 import { HiHomeModern } from "react-icons/hi2";
@@ -7,8 +7,37 @@ import { FaTelegramPlane } from "react-icons/fa";
 import { FaMessage } from "react-icons/fa6";
 import ScrollToTop from "../components/ScrollTop";
 import { CiUser } from "react-icons/ci";
+import { AuthContext } from "../context/AuthContext";
+import { auth, firestore } from "../config/firebase";
+import { doc, getDoc } from "firebase/firestore";
+import { CiHeart } from "react-icons/ci";
 
 const Layout = () => {
+  let { userData, setUserData, logoutHandle, favno, setFavNo } =
+    useContext(AuthContext);
+
+  const fetchUser = async () => {
+    auth.onAuthStateChanged(async (user) => {
+      if (user) {
+        const DocRef = doc(firestore, "users", user.uid);
+        const docSnap = await getDoc(DocRef);
+        if (docSnap.exists()) {
+          setUserData(docSnap.data());
+          setFavNo(docSnap.data().favourites.length);
+          // console.log(docSnap.data());
+        } else {
+          console.log("user is not logged in ");
+        }
+      } else {
+        console.log("not getting data, user is not logged in ");
+      }
+    });
+  };
+
+  useEffect(() => {
+    fetchUser();
+  }, []);
+
   const [cross, setCross] = useState(true);
   const [menu, setMenu] = useState(false);
   return (
@@ -135,12 +164,57 @@ const Layout = () => {
             </div>
           </div>
 
-          <div className=" md:hidden flex items-center gap-2  ">
-            <div className="flex md:hidden">
-              <Link to={"/login"} className="font-bold">
-                <CiUser />
-              </Link>
-            </div>
+          <div className="flex items-center gap-2 px-2 ">
+            {userData ? (
+              <div className="flex gap-2">
+                <Link to={`/favourites`} className="font-bold relative">
+                  <CiHeart className="text-xl md:text-2xl" />
+                  <p className="text-[10px] absolute top-[-4px] right-0 font-bold bg-slate-100  text-red-500">
+                    {favno}
+                  </p>
+                </Link>
+                <Link to={`/user`} className="font-bold">
+                  <CiUser className="text-xl" />
+                </Link>
+              </div>
+            ) : (
+              <div className="flex items-center gap-2 ">
+                <Link to={`/favourites`} className="font-bold">
+                  <CiHeart className="text-xl md:text-2xl" />
+                  <p className="text-[10px] absolute top-[-4px] right-0 font-bold bg-slate-100  text-red-500">
+                    {favno}
+                  </p>
+                </Link>
+                <div className="flex">
+                  <div className="md:hidden">
+                    <Link to={`/login`} className="font-bold">
+                      <CiUser className="text-xl" />
+                    </Link>
+                  </div>
+                </div>
+                <div className=" hidden md:flex   mt-10   text-md md:mt-0 items-center gap-4">
+                  <Link
+                    to={"/login"}
+                    className="bg-purple-500 text-white px-2 py-1 rounded-md"
+                    onClick={() => {
+                      setMenu(false);
+                    }}
+                  >
+                    Login
+                  </Link>
+                  <Link
+                    to={"/signup"}
+                    className="border border-purple-500 px-2 py-1 rounded-md"
+                    onClick={() => {
+                      setMenu(false);
+                    }}
+                  >
+                    Sign Up
+                  </Link>
+                </div>
+              </div>
+            )}
+
             <div
               onClick={() => {
                 setMenu(true);
@@ -151,27 +225,19 @@ const Layout = () => {
             </div>
           </div>
 
+          {/* <div>
+            {user ? (
+              <div className="flex ">
+                <Link to={"/login"} className="font-bold">
+                  <CiUser />
+                </Link>
+              </div>
+            ) : (
+              
+            )}
+          </div> */}
+
           {/* login signup */}
-          <div className=" hidden md:flex   mt-10   text-md md:mt-0 items-center gap-4">
-            <Link
-              to={"/login"}
-              className="bg-purple-500 text-white px-2 py-1 rounded-md"
-              onClick={() => {
-                setMenu(false);
-              }}
-            >
-              Login
-            </Link>
-            <Link
-              to={"/signup"}
-              className="border border-purple-500 px-2 py-1 rounded-md"
-              onClick={() => {
-                setMenu(false);
-              }}
-            >
-              Sign Up
-            </Link>
-          </div>
         </div>
       </div>
 

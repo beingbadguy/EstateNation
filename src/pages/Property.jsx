@@ -1,30 +1,36 @@
-import React, { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
-import { getDoc, doc } from "firebase/firestore";
+import React, { useEffect, useState, useContext } from "react";
+import { Link, useNavigate, useParams } from "react-router-dom";
+import { getDoc, doc, updateDoc, addDoc } from "firebase/firestore";
 import { MdArrowLeft } from "react-icons/md";
 import { IoBedSharp } from "react-icons/io5";
 import { GiBathtub } from "react-icons/gi";
-import { GrMapLocation } from "react-icons/gr";
 import { MdLocalPhone } from "react-icons/md";
-import { CiMail } from "react-icons/ci";
 import { CiHeart } from "react-icons/ci";
 import { firestore } from "../config/firebase";
 import { collection, getDocs } from "firebase/firestore";
 import View from "../components/View";
 import { BsTextareaResize } from "react-icons/bs";
-import Rating from "../components/Rating";
+// import Rating from "../components/Rating";
 import { MdLocationOn } from "react-icons/md";
 import { RxDimensions } from "react-icons/rx";
 import { MdOutlineAttachMoney } from "react-icons/md";
 import { BiSolidMessageSquareDetail } from "react-icons/bi";
+import { AuthContext } from "../context/AuthContext";
+import { FaHeart } from "react-icons/fa";
 
 const Property = () => {
+  const { userData } = useContext(AuthContext);
+
   const { id } = useParams();
   const [property, setProperties] = useState([]);
 
   const [product, setProduct] = useState(null);
   const [currentUrl, setCurrentUrl] = useState();
 
+  const [fav, setFav] = useState([]);
+  const [heart, setHeart] = useState(false);
+
+  const navigate = useNavigate();
   const fetchingData = async () => {
     try {
       const dataRef = collection(firestore, "properties");
@@ -42,6 +48,8 @@ const Property = () => {
     fetchingData();
   }, [id]);
 
+  const filteredData = property.filter((item) => item.id != id);
+
   const productFetch = async () => {
     try {
       const productRef = doc(firestore, "properties", id);
@@ -55,10 +63,59 @@ const Property = () => {
       console.log(error.message);
     }
   };
-  // console.log(product);
+
+  const userinfo = async (userData) => {
+    try {
+      const dataRef = doc(firestore, "users", userData.userId);
+      const dataSnapshot = await getDoc(dataRef);
+      const NewData = dataSnapshot.data();
+      // console.log(NewData);
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
+
+  const handleFav = async (userData, proId, product) => {
+    if (!userData) {
+      return navigate("/login");
+    }
+    try {
+      const userRef = doc(firestore, "users", userData.userId);
+      const dataSnapshot = await getDoc(userRef);
+
+      if (dataSnapshot.exists()) {
+        const alreadyFav = dataSnapshot.data().favourites || [];
+        console.log(alreadyFav);
+
+        const isFav = alreadyFav.some((item) => item.id === proId);
+
+        if (isFav) {
+          return "Already added to Favourites";
+        } else {
+          const updatedFav = [...alreadyFav, product];
+
+          await updateDoc(userRef, { favourites: updatedFav });
+
+          alert("Added to Favourites");
+        }
+      }
+      window.location.reload();
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
   useEffect(() => {
     productFetch();
   }, [id]);
+
+  useEffect(() => {
+    if (userData) {
+      userinfo(userData);
+    }
+  }, [userData]);
+
+  // useEffect(() => {}, []);
+
   return (
     <div className="text-black">
       <div className="m-5 text-sm flex items-center  flex-row gap-2 font-sans">
@@ -101,7 +158,7 @@ const Property = () => {
 
             <div className="flex flex-col gap-2 md:gap-6">
               <h1 className="font-bold text-4xl ">{product.name}</h1>
-              <div className="flex flex-w gap-1 sm:gap-10 text-sm p-1 ">
+              <div className="flex flex-wrap gap-1 sm:gap-10 text-sm p-1 ">
                 <div className="text-white flex items-center text-md gap-2 bg-blue-800  px-4 py-1 rounded ">
                   <GiBathtub />
                   {product.bathrooms}
@@ -141,9 +198,35 @@ const Property = () => {
                 <a href={`mailto:${product.email}`}>{product.email}</a>
               </div>
               <div>{/* <Rating /> */}</div>
-              <div className="bg-purple-500 text-white flex justify-center items-center font-bold p-2 gap-2 cursor-pointer rounded-xl">
-                <CiHeart className="text-2xl" />
-                <p>Add to Favourite</p>
+              <div
+                className="bg-purple-500 text-white flex justify-center items-center font-bold p-2 gap-2 cursor-pointer rounded-xl"
+                onClick={async () => {
+                  await handleFav(userData, product.id, product);
+                  setFav([...fav, product]);
+                  setHeart(true);
+                  // }
+                }}
+              >
+                <FaHeart
+                  className={` ${
+                    userData
+                      ? userData.favourites.some(
+                          (item) => item.id === product.id
+                        ) || heart
+                        ? "text-red-600"
+                        : " text-xl"
+                      : null
+                  }
+                    
+                  `}
+                  onClick={() => [setHeart(true)]}
+                />
+                <p>
+                  {userData &&
+                  userData.favourites.some((item) => item.id === product.id)
+                    ? "Added to wishlist"
+                    : "Add to wishlist"}
+                </p>
               </div>
             </div>
           </div>
@@ -153,18 +236,18 @@ const Property = () => {
       <div className="mt-7">
         <h1 className="ml-4  font-bold">Properties you may like</h1>
         <div className="flex flex-wrap items-center justify-center md:items-center md:justify-center md:gap-10 mt-4 gap-2  sm:p-10">
-          {property &&
-            property.map((item) => (
+          {filteredData &&
+            filteredData.map((item) => (
               <div key={item.id} className="shadow-sm">
                 <div
                   key={item.id}
-                  className="rounded-t-2xl w-[200px] sm:w-[250px] md:w-[300px] relative text-sm md:text-md "
+                  className="rounded-t-2xl w-[320px] sm:w-[250px] md:w-[300px] relative text-sm md:text-md "
                 >
                   <div className="rounded-t-xl">
                     <img
                       src={item.img_url}
                       alt=""
-                      className="h-[300px] w-[530px] sm:w-[250px] md:w-[300px] rounded-t-xl"
+                      className="h-[300px] w-[530px] sm:w-[300px] md:w-[300px] rounded-t-xl"
                     />
                   </div>
                   <div className="bg-slate-200 text-black font-bold p-3 rounded-b-xl">

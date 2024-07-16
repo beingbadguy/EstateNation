@@ -1,9 +1,20 @@
-import React from "react";
+import React, { useContext, useEffect } from "react";
 import Create from "../components/Create";
 import { GiBrightExplosion } from "react-icons/gi";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { AuthContext } from "../context/AuthContext";
 
 const Sell = () => {
+  const navigate = useNavigate();
+
+  let { userData, setUserData, logoutHandle } = useContext(AuthContext);
+
+  useEffect(() => {
+    if (!userData) {
+      return navigate("/login");
+    }
+  }, []);
+
   return (
     <div className="min-h-[81vh] text-black">
       <div className="text-black m-10 ">
@@ -16,7 +27,7 @@ const Sell = () => {
         </p>
       </div>
       <div>
-        <Create />
+        <Create userData={userData} />
       </div>
     </div>
   );
