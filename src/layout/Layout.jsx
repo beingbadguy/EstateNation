@@ -79,14 +79,14 @@ const Layout = () => {
 
           {/* menu bar  */}
           <div
-            className={`md:flex md:items-center md:justify-between gap-10  bg-slate-200 md:bg-transparent min-h-[99vh] p-20  md:p-0 md:min-h-0  absolute md:static top-0 left-0 translate-x-[-100%] transition-all duration-500 z-[999]   ${
+            className={`md:flex md:items-center justify-center md:justify-between gap-10  bg-slate-200 md:bg-transparent min-h-[100vh] p-20  md:p-0 md:min-h-0  fixed md:static top-0 left-0 translate-x-[-100%] transition-all duration-500 z-[999]   ${
               menu
                 ? "translate-x-[0%] md:translate-x-0"
                 : "translate-x-[-100%] md:translate-x-0"
             } `}
           >
             <div className=" sm:block font-bold ">
-              <ul className="md:flex flex flex-col md:flex-row items-center justify-center gap-6 lg:gap-10 text-4xl md:text-sm mt-20 md:mt-0">
+              <ul className="md:flex flex flex-col  md:flex-row items-center justify-center gap-6 lg:gap-10 text-4xl md:text-sm mt-20 md:mt-0">
                 <p className="absolute right-16 top-10 md:hidden">
                   <IoIosClose
                     onClick={() => {
@@ -174,14 +174,15 @@ const Layout = () => {
                   </p>
                 </Link>
                 <Link to={`/user`} className="font-bold">
-                  <CiUser className="text-xl" />
+                  <img src=".\boy.png" className="text-xl h-6 w-6 rounded-full" />
                 </Link>
               </div>
             ) : (
               <div className="flex items-center gap-2 ">
                 <Link to={`/favourites`} className="font-bold">
-                  <CiHeart className="text-xl md:text-2xl" />
-                  <p className="text-[10px] absolute top-[-4px] right-0 font-bold bg-slate-100  text-red-500">
+                    <CiHeart className="text-xl md:text-2xl" />
+                  
+                  <p className={` ${favno ===0 ? "hidden": "block"} text-[10px] absolute top-[-4px] right-0 font-bold bg-slate-100  text-red-500"`}>
                     {favno}
                   </p>
                 </Link>

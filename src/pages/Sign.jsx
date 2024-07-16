@@ -1,16 +1,36 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useContext, useEffect, useRef, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { HiHomeModern } from "react-icons/hi2";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth, firestore } from "../config/firebase";
 import { addDoc, doc, setDoc } from "firebase/firestore";
+import { AuthContext } from "../context/AuthContext";
+import { InfinitySpin } from "react-loader-spinner";
+import { VscEye } from "react-icons/vsc";
+import { VscEyeClosed } from "react-icons/vsc";
 
 const Sign = () => {
+  const { userData, setUserData } = useContext(AuthContext);
+
   const [user, setUser] = useState({
     name: "",
     email: "",
     password: "",
   });
+
+  const navigate = useNavigate();
+
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
+  const [hide, setHide] = useState(false);
+  const [type, setType] = useState(true);
+
+  useEffect(() => {
+    if (userData) {
+      return navigate("/");
+    }
+  }, [userData, navigate]);
+
   const userFormHandler = (e) => {
     const { name, value } = e.target;
     setUser({ ...user, [name]: value });
@@ -18,23 +38,38 @@ const Sign = () => {
 
   const handleCreateAccount = async (e) => {
     e.preventDefault();
-    try {
-      await createUserWithEmailAndPassword(auth, user.email, user.password);
-      const userData = auth.currentUser;
-      console.log(userData);
-      if (userData) {
-        await setDoc(doc(firestore, "users", userData.uid), {
-          name: user.name,
-          email: userData.email,
-          userId: userData.uid,
-          properties: [],
-          favourites: [],
-          role: "user",
-        });
+
+    if (
+      user.name != "" &&
+      user.email != "" &&
+      user.password != "" &&
+      user.email.includes("@") &&
+      user.password.length >= 6
+    ) {
+      try {
+        setLoading(true);
+        await createUserWithEmailAndPassword(auth, user.email, user.password);
+        const userData = auth.currentUser;
+        // console.log(userData);
+        if (userData) {
+          await setDoc(doc(firestore, "users", userData.uid), {
+            name: user.name,
+            email: userData.email,
+            userId: userData.uid,
+            properties: [],
+            favourites: [],
+            role: "user",
+          });
+        }
+        console.log("user had created successfully");
+        setLoading(false);
+        navigate("/login");
+      } catch (error) {
+        setError(error.message);
+        setLoading(false);
       }
-      console.log("user had created successfully");
-    } catch (error) {
-      console.log(error.message);
+    } else {
+      setError("Please enter all fields");
     }
   };
 
@@ -90,20 +125,53 @@ const Sign = () => {
             <label className="text-black">
               Password <span className="text-red-500">*</span>
             </label>
-            <input
-              type="password"
-              name="password"
-              value={user.password}
-              onChange={(e) => {
-                userFormHandler(e);
-              }}
-              className="bg-white px-2 py-2 border border-black text-black  w-[300px] md:w-[400px] rounded-md "
-              placeholder="anonymous123"
-            />
+
+            <div className="flex items-center relative">
+              <input
+                type={type ? "password" : "text"}
+                name="password"
+                value={user.password}
+                onChange={(e) => {
+                  userFormHandler(e);
+                }}
+                className="bg-white px-2 py-2 border border-black text-black  w-[300px] md:w-[400px] rounded-md "
+                placeholder="anonymous123"
+              />
+              {!hide ? (
+                <VscEyeClosed
+                  className="text-black absolute right-2 top-3"
+                  onClick={() => {
+                    setHide(!hide);
+                    setType(!type);
+                  }}
+                />
+              ) : (
+                <VscEye
+                  className="text-black absolute right-2 top-3"
+                  onClick={() => {
+                    setHide(!hide);
+                    setType(!type);
+                  }}
+                />
+              )}
+            </div>
           </div>
-          <button className="bg-purple-500 px-2 py-2 border border-black text-white  w-[300px] md:w-[400px] rounded-md">
-            Create account
+
+          <button className="bg-purple-500 px-2 py-2 border border-black text-white  w-[300px] md:w-[400px] rounded-md text-center flex justify-center items-center">
+            {loading ? (
+              <InfinitySpin
+                visible={true}
+                width="50"
+                height="50"
+                color="white"
+                ariaLabel="infinity-spin-loading"
+              />
+            ) : (
+              "Create Account"
+            )}
           </button>
+          <p className="text-red-500">{error}</p>
+
           <div className="text-black flex gap-2">
             <p>Already have account? </p>
             <Link to={"/login"} className=" underline">

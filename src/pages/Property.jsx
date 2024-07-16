@@ -1,11 +1,11 @@
 import React, { useEffect, useState, useContext } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
-import { getDoc, doc, updateDoc, addDoc } from "firebase/firestore";
 import { MdArrowLeft } from "react-icons/md";
 import { IoBedSharp } from "react-icons/io5";
 import { GiBathtub } from "react-icons/gi";
 import { MdLocalPhone } from "react-icons/md";
 import { CiHeart } from "react-icons/ci";
+import { getDoc, doc, updateDoc, addDoc } from "firebase/firestore";
 import { firestore } from "../config/firebase";
 import { collection, getDocs } from "firebase/firestore";
 import View from "../components/View";
@@ -95,8 +95,6 @@ const Property = () => {
           const updatedFav = [...alreadyFav, product];
 
           await updateDoc(userRef, { favourites: updatedFav });
-
-          alert("Added to Favourites");
         }
       }
       window.location.reload();

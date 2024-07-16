@@ -3,7 +3,7 @@ import { firestore, storage } from "../config/firebase";
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { addDoc, collection } from "firebase/firestore";
 const Create = ({ userData }) => {
-  console.log(userData);
+  // console.log(userData);
   const [formData, setFormData] = useState({
     name: "",
     bathrooms: "",
@@ -12,7 +12,6 @@ const Create = ({ userData }) => {
     state: "",
     price: "",
     mobile: "",
-    email: "",
   });
   const [images, setImages] = useState([]);
   const [hide, setHide] = useState();
@@ -91,7 +90,6 @@ const Create = ({ userData }) => {
     }
   };
 
-  console.log(images);
   return (
     <div className=" pl-10 pr-10   rounded">
       <form
@@ -213,21 +211,6 @@ const Create = ({ userData }) => {
             value={formData.mobile}
             className="bg-white text-black p-2 w-[200px] md:w-[290px]  rounded-md"
             placeholder="Number"
-            onChange={(e) => {
-              changeHandler(e);
-            }}
-          />
-        </div>{" "}
-        <div className="flex flex-col font-semibold gap-1 ">
-          <label className="text-white">
-            Email <span className="text-red-400">*</span>{" "}
-          </label>
-          <input
-            type="email"
-            name="email"
-            value={formData.email}
-            className="bg-white text-black p-2 w-[200px] md:w-[290px] rounded-md"
-            placeholder="Email"
             onChange={(e) => {
               changeHandler(e);
             }}
