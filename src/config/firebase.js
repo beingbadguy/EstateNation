@@ -5,9 +5,9 @@ import { getStorage } from "firebase/storage";
 import { getAuth, GoogleAuthProvider } from "firebase/auth";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyAPAtEouiQp7VRAtr08wHvL9_CUC3bynEM",
-  authDomain: "real-estate-ff033.firebaseapp.com",
-  projectId: "real-estate-ff033",
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
+  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
+  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
   storageBucket: "real-estate-ff033.appspot.com",
   messagingSenderId: "312071522450",
   appId: "1:312071522450:web:2de0b82ea24260da53fe4b",
