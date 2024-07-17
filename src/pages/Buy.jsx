@@ -47,7 +47,7 @@ const Buy = () => {
   useEffect(() => {}, [setFilteredData]);
 
   return (
-    <div className="min-h-[81vh] text-black">
+    <div className="min-h-[81vh] text-black select-none">
       <div className="ml-8 mt-8">
         <h2 className="text-3xl font-bold">Find Your Dream Properly ❤️</h2>
         <p className="text-neutral-600 w-[90%] sm:w-[60%] mt-3">

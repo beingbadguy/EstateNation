@@ -74,7 +74,7 @@ const Sign = () => {
   };
 
   return (
-    <div className="min-h-[81vh] bg-slate-50 text-white  flex items-center justify-center mt-3">
+    <div className="min-h-[81vh] bg-slate-50 text-white  flex items-center justify-center mt-3 select-none">
       <div>
         <form
           className="flex flex-col p-4 gap-3"

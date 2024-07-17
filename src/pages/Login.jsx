@@ -58,7 +58,7 @@ const Login = () => {
   };
 
   return (
-    <div className="min-h-[81vh] bg-slate-50 text-white  flex items-center justify-center mt-3">
+    <div className="min-h-[81vh] bg-slate-50 text-white select-none  flex items-center justify-center mt-3">
       <div className="flex items-center flex-col">
         <form
           className="flex flex-col p-4 gap-3"

@@ -115,7 +115,7 @@ const Property = () => {
   // useEffect(() => {}, []);
 
   return (
-    <div className="text-black">
+    <div className="text-black select-none">
       <div className="m-5 text-sm flex items-center  flex-row gap-2 font-sans">
         <Link to="/" className=" ">
           Home

@@ -36,7 +36,7 @@ const Fav = () => {
   useEffect(() => {}, [setFavNo]);
 
   return (
-    <div className="pb-10">
+    <div className="pb-10 select-none">
       <h1 className="text-lg font-bold p-4 ">
         Your Favourites ({userData && userData.favourites.length})
       </h1>

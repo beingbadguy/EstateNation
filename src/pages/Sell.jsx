@@ -16,7 +16,7 @@ const Sell = () => {
   }, []);
 
   return (
-    <div className="min-h-[81vh] text-black">
+    <div className="min-h-[81vh] text-black select-none">
       <div className="text-black m-10 ">
         <h2 className="text-4xl font-bold">Let's Make it Happen 😍</h2>
         <p className="text-neutral-500 font-semibold w-[90%] sm:w-[60%] mt-3">

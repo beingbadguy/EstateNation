@@ -46,7 +46,7 @@ const User = () => {
   }, []);
 
   return (
-    <div>
+    <div className="select-none">
       <div className="flex justify-center items-center flex-col min-h-[61vh] bg-white ">
         <h1 className="mt-10 mb-5 font-semibold">My Profile</h1>
         <div className="border flex items-center p-4 sm:gap-10 relative flex-col sm:flex-row shadow-md">
