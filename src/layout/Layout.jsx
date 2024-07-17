@@ -48,19 +48,19 @@ const Layout = () => {
         <div
           className={`${
             cross ? "flex" : "hidden"
-          } bg-white  text-black  gap-2 items-center justify-center p-3 border-b `}
+          } bg-white   text-black  gap-2 items-center justify-center p-3 border-b `}
         >
-          <p className="text-sm sm:text-md">
+          <p className="text-[13px] sm:text-md">
             ✨Discover Your Dream Property with EstateNation
           </p>
-          <p className="underline cursor-pointer hidden sm:flex">
+          <p className=" text-[13px] sm:text-md underline cursor-pointer hidden sm:flex">
             <Link to={"/about"} className="text-purple-500">
               Learn More{" "}
             </Link>
           </p>
-          <div className="absolute right-0 pr-4">
+          <div className="absolute right-1 top-3 ">
             <IoIosClose
-              className="rounded-[100%]  cursor-pointer text-sm sm:text-xl md:text-2xl"
+              className="rounded-[100%] text-red-500  cursor-pointer text-xl  sm:text-xl md:text-2xl"
               onClick={() => {
                 setCross(false);
               }}
@@ -175,7 +175,7 @@ const Layout = () => {
                   </p>
                 </Link>
                 <Link to={`/user`} className="font-bold">
-                  <ImUser  className="text-2xl"/>
+                  <ImUser className="text-2xl" />
                 </Link>
               </div>
             ) : (
