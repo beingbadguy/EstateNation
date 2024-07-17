@@ -98,7 +98,11 @@ const Layout = () => {
                 <li>
                   <NavLink
                     to={"/"}
-                    className="hover:bg-purple-500 hover:text-white p-2 transition-all duration-300 rounded-md"
+                    className={({ isActive }) =>
+                      isActive
+                        ? "bg-purple-500 text-white p-2 transition-all duration-300 rounded-md"
+                        : "hover:bg-purple-500 hover:text-white p-2 transition-all duration-300 rounded-md"
+                    }
                     onClick={() => {
                       setMenu(false);
                     }}
@@ -107,59 +111,79 @@ const Layout = () => {
                   </NavLink>
                 </li>
                 <li>
-                  <Link
+                  <NavLink
                     to={"/buy"}
-                    className="hover:bg-purple-500 hover:text-white p-2 transition-all duration-300 rounded-md"
+                    className={({ isActive }) =>
+                      isActive
+                        ? "bg-purple-500 text-white p-2 transition-all duration-300 rounded-md"
+                        : "hover:bg-purple-500 hover:text-white p-2 transition-all duration-300 rounded-md"
+                    }
                     onClick={() => {
                       setMenu(false);
                     }}
                   >
                     Buy
-                  </Link>
+                  </NavLink>
                 </li>
                 <li>
-                  <Link
+                  <NavLink
                     to={"/sell"}
-                    className="hover:bg-purple-500 hover:text-white p-2 transition-all duration-300 rounded-md"
+                    className={({ isActive }) =>
+                      isActive
+                        ? "bg-purple-500 text-white p-2 transition-all duration-300 rounded-md"
+                        : "hover:bg-purple-500 hover:text-white p-2 transition-all duration-300 rounded-md"
+                    }
                     onClick={() => {
                       setMenu(false);
                     }}
                   >
                     Sell
-                  </Link>
+                  </NavLink>
                 </li>
                 <li>
-                  <Link
+                  <NavLink
                     to={"/about"}
-                    className="hover:bg-purple-500 hover:text-white p-2 transition-all duration-300 rounded-md"
+                    className={({ isActive }) =>
+                      isActive
+                        ? "bg-purple-500 text-white p-2 transition-all duration-300 rounded-md"
+                        : "hover:bg-purple-500 hover:text-white p-2 transition-all duration-300 rounded-md"
+                    }
                     onClick={() => {
                       setMenu(false);
                     }}
                   >
                     About
-                  </Link>
+                  </NavLink>
                 </li>
                 <li>
-                  <Link
+                  <NavLink
                     to={"/services"}
-                    className="hover:bg-purple-500 hover:text-white p-2 transition-all duration-300 rounded-md"
+                    className={({ isActive }) =>
+                      isActive
+                        ? "bg-purple-500 text-white p-2 transition-all duration-300 rounded-md"
+                        : "hover:bg-purple-500 hover:text-white p-2 transition-all duration-300 rounded-md"
+                    }
                     onClick={() => {
                       setMenu(false);
                     }}
                   >
                     Services
-                  </Link>
+                  </NavLink>
                 </li>
                 <li>
-                  <Link
+                  <NavLink
                     to={"/contact"}
-                    className="hover:bg-purple-500 hover:text-white p-2 transition-all duration-300 rounded-md"
+                    className={({ isActive }) =>
+                      isActive
+                        ? "bg-purple-500 text-white p-2 transition-all duration-300 rounded-md"
+                        : "hover:bg-purple-500 hover:text-white p-2 transition-all duration-300 rounded-md"
+                    }
                     onClick={() => {
                       setMenu(false);
                     }}
                   >
                     Contact
-                  </Link>
+                  </NavLink>
                 </li>
               </ul>
             </div>
