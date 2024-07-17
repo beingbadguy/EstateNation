@@ -197,7 +197,7 @@ const Property = () => {
               </div>
               <div>{/* <Rating /> */}</div>
               <div
-                className="border-purple-500   border text-white flex justify-center items-center font-bold p-2 gap-2 cursor-pointer rounded-xl"
+                className="border-purple-500   border  flex justify-center items-center font-bold p-2 gap-2 cursor-pointer rounded-xl"
                 onClick={async () => {
                   await handleFav(userData, product.id, product);
                   setFav([...fav, product]);
