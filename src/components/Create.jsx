@@ -73,7 +73,7 @@ const Create = ({ userData }) => {
         email: userData.email,
         user_id: userData.userId,
       });
-      console.log("data uploaded successfully!");
+      alert("Property uploaded successfully!");
       setLoading("submit");
       setFormData({
         name: "",

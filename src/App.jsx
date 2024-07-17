@@ -70,7 +70,7 @@ const App = () => {
             </Link>
           </div>
 
-          <div className="flex gap-5 mt-0 md:mt-20 flex-col md:flex-row  w-[300px] sm:[100%] ">
+          <div className="flex gap-5 mt-0 md:mt-18 flex-col md:flex-row  w-[300px] sm:[100%] ">
             <div className="bg-slate-100 p-6 rounded-xl ">
               <p className="text-3xl">200+</p>
               <p className="text-black">Happy Customers</p>
