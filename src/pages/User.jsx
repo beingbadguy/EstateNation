@@ -6,6 +6,7 @@ import { getDoc, doc, updateDoc, addDoc, deleteDoc } from "firebase/firestore";
 import { firestore } from "../config/firebase";
 import { collection, getDocs } from "firebase/firestore";
 import { MdOutlineDelete } from "react-icons/md";
+import { IoIosReturnRight } from "react-icons/io";
 
 const User = () => {
   const { userData, setUserData, logoutHandle } = useContext(AuthContext);
@@ -88,12 +89,13 @@ const User = () => {
               </div>
               <div className=" p-2">
                 <Link to={`/property/${item.id}`}>
-                  <p className="text-sm hover:bg-purple-700 font-bold bg-purple-500 text-white duration-500 transition-all p-1 rounded">
-                    View
-                  </p>
+                  <div className=" text-sm font-bold bg-purple-500 p-1 text-white rounded w-[90px] hover:bg-purple-700 duration-500 transition-all flex items-center justify-center gap-2">
+                    <IoIosReturnRight />
+                    <p className="">View</p>
+                  </div>
                 </Link>
               </div>
-              <div className="absolute right-0 top-0 p-2">
+              <div className="absolute right-0 top-0 p-2  bg-slate-300 hover:bg-red-300 transition-all duration-500 cursor-pointer w-8 h-8 flex justify-center items-center rounded-full ">
                 <button
                   onClick={() => {
                     deleteProperty(item.id);

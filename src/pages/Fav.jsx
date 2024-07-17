@@ -4,6 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { MdOutlineDelete } from "react-icons/md";
 import { firestore } from "../config/firebase";
 import { arrayRemove, doc, updateDoc } from "firebase/firestore";
+import { IoIosReturnRight } from "react-icons/io";
 
 const Fav = () => {
   const { userData, setUserData, setFavNo } = useContext(AuthContext);
@@ -45,21 +46,22 @@ const Fav = () => {
           userData.favourites.map((item) => (
             <div
               key={item.id}
-              className="flex items-center justify-between gap-10 sm:gap-28 relative"
+              className="flex items-center justify-between gap-10 sm:gap-28 relative border-b pb-2"
             >
-              <img src={item.img_url} alt={item.name} className="h-28 w-32" />
-              <div className="flex flex-col sm:flex-row sm:items-center justify-between  w-[300px]  sm:w-[900px] sm:mr-20">
+              <img src={item.img_url} alt={item.name} className="h-32 w-20 sm:w-32 rounded-sm" />
+              <div className="flex flex-col md:flex-row sm:items-center justify-between  w-[300px]  sm:w-[900px] sm:mr-20">
                 <h2>{item.name}</h2>
                 <p>${item.price}/month</p>
                 <p>{item.state}</p>
                 <Link to={`/property/${item.id}`}>
-                  <p className="text-sm font-bold bg-purple-500 p-1 text-white rounded w-[90px] hover:bg-purple-700 duration-500 transition-all">
-                    View Details
-                  </p>
+                  <div className=" text-sm font-bold bg-purple-500 p-1 text-white rounded w-[90px] hover:bg-purple-700 duration-500 transition-all flex items-center justify-center gap-2">
+                    <IoIosReturnRight />
+                    <p className="">View</p>
+                  </div>
                 </Link>
               </div>
               <div>
-                <div className="absolute right-0 top-0 p-2">
+                <div className="absolute right-0 top-0 p-2 bg-slate-300 hover:bg-red-300 transition-all duration-500 cursor-pointer w-8 h-8 flex justify-center items-center rounded-full">
                   <button
                     onClick={() => {
                       deleteFavorite(item);

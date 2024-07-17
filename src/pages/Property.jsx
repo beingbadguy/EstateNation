@@ -197,7 +197,7 @@ const Property = () => {
               </div>
               <div>{/* <Rating /> */}</div>
               <div
-                className="bg-purple-500 text-white flex justify-center items-center font-bold p-2 gap-2 cursor-pointer rounded-xl"
+                className="border-purple-500   border text-white flex justify-center items-center font-bold p-2 gap-2 cursor-pointer rounded-xl"
                 onClick={async () => {
                   await handleFav(userData, product.id, product);
                   setFav([...fav, product]);
@@ -211,20 +211,21 @@ const Property = () => {
                       ? userData.favourites.some(
                           (item) => item.id === product.id
                         ) || heart
-                        ? "text-red-600"
-                        : " text-xl"
+                        ? "text-pink-600"
+                        : "text-black text-xl"
                       : null
                   }
                     
                   `}
                   onClick={() => [setHeart(true)]}
                 />
-                <p>
-                  {userData &&
-                  userData.favourites.some((item) => item.id === product.id)
-                    ? "Added to wishlist"
-                    : "Add to wishlist"}
-                </p>
+
+                {userData &&
+                userData.favourites.some((item) => item.id === product.id) ? (
+                  <p className="text-pink-600">Added to Wishlist</p>
+                ) : (
+                  <p className="text-black">Add to wishlist</p>
+                )}
               </div>
             </div>
           </div>
