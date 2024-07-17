@@ -11,6 +11,7 @@ import { AuthContext } from "../context/AuthContext";
 import { auth, firestore } from "../config/firebase";
 import { doc, getDoc } from "firebase/firestore";
 import { CiHeart } from "react-icons/ci";
+import { ImUser } from "react-icons/im";
 
 const Layout = () => {
   let { userData, setUserData, logoutHandle, favno, setFavNo } =
@@ -174,15 +175,19 @@ const Layout = () => {
                   </p>
                 </Link>
                 <Link to={`/user`} className="font-bold">
-                  <img src=".\boy.png" className="text-xl h-6 w-6 rounded-full" />
+                  <ImUser  className="text-2xl"/>
                 </Link>
               </div>
             ) : (
               <div className="flex items-center gap-2 ">
                 <Link to={`/favourites`} className="font-bold">
-                    <CiHeart className="text-xl md:text-2xl" />
-                  
-                  <p className={` ${favno ===0 ? "hidden": "block"} text-[10px] absolute top-[-4px] right-0 font-bold bg-slate-100  text-red-500"`}>
+                  <CiHeart className="text-xl md:text-2xl" />
+
+                  <p
+                    className={` ${
+                      favno === 0 ? "hidden" : "block"
+                    } text-[10px] absolute top-[-4px] right-0 font-bold bg-slate-100  text-red-500"`}
+                  >
                     {favno}
                   </p>
                 </Link>

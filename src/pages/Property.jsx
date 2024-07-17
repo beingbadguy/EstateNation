@@ -85,7 +85,7 @@ const Property = () => {
 
       if (dataSnapshot.exists()) {
         const alreadyFav = dataSnapshot.data().favourites || [];
-        console.log(alreadyFav);
+        // console.log(alreadyFav);
 
         const isFav = alreadyFav.some((item) => item.id === proId);
 

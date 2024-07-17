@@ -34,18 +34,6 @@ const Login = () => {
     setUser({ ...user, [name]: value });
   };
 
-  const handleGoogleSignIn = async () => {
-    try {
-      const result = await signInWithPopup(auth, googleProvider);
-      console.log(result.user);
-      console.log("user has been logged in with google");
-
-      navigate("/");
-    } catch (error) {
-      console.error("Error signing in with Google: ", error);
-      console.log(error);
-    }
-  };
   const handleLogin = async (e) => {
     e.preventDefault();
     if (
@@ -57,9 +45,9 @@ const Login = () => {
       try {
         setLoading(true);
         await signInWithEmailAndPassword(auth, user.email, user.password);
-        navigate("/");
         console.log("user logged in successfully");
         setLoading(false);
+        navigate("/");
       } catch (error) {
         setError(error.message);
         setLoading(false);
@@ -68,10 +56,6 @@ const Login = () => {
       setError("Please enter email and password");
     }
   };
-
-  // if (userData) {
-  //   return navigate("/");
-  // }
 
   return (
     <div className="min-h-[81vh] bg-slate-50 text-white  flex items-center justify-center mt-3">
@@ -132,7 +116,6 @@ const Login = () => {
                 onClick={() => {
                   setHide(!hide);
                   setType(!type);
-
                 }}
               />
             )}

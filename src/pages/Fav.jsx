@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../context/AuthContext";
 import { Link, useNavigate } from "react-router-dom";
 import { MdOutlineDelete } from "react-icons/md";
@@ -17,14 +17,12 @@ const Fav = () => {
         favourites: arrayRemove(property),
       });
 
-      // Update local state to remove the property from favorites
       setUserData((prevData) => ({
         ...prevData,
         favourites: prevData.favourites.filter((fav) => fav.id !== property.id),
       }));
-
-           window.location.reload();
-
+      setFavNo(userData.favourites.length - 1);
+      // navigate(0);
     } catch (error) {
       console.error("Error removing favorite: ", error);
     }
@@ -35,6 +33,7 @@ const Fav = () => {
       return navigate("/login");
     }
   }, []);
+  useEffect(() => {}, [setFavNo]);
 
   return (
     <div className="pb-10">
