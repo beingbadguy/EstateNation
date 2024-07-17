@@ -66,7 +66,23 @@ const router = createBrowserRouter([
         path: "/favourites",
         element: <Fav />,
       },
+      {
+        path: "*",
+        element: (
+          <div className="min-h-[32vh] flex items-center justify-center font-bold">
+            <p>You have reached the undefined path go back to the home page</p>
+          </div>
+        ),
+      },
     ],
+  },
+  {
+    path: "*",
+    element: (
+      <div className="min-h-[32vh] flex items-center justify-center font-bold">
+        Page not found
+      </div>
+    ),
   },
 ]);
 
