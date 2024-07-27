@@ -74,7 +74,7 @@ const Create = ({ userData }) => {
         user_id: userData.userId,
       });
       alert("Property uploaded successfully!");
-      setLoading("submit");
+     
       setFormData({
         name: "",
         bathrooms: "",

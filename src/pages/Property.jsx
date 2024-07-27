@@ -116,20 +116,21 @@ const Property = () => {
 
   return (
     <div className="text-black select-none">
-      <div className="m-5 text-sm flex items-center  flex-row gap-2 font-sans">
+      <div className="m-5 text-sm flex items-center  flex-row gap-2 font-sans text-purple-400">
         <Link to="/" className=" ">
           Home
         </Link>
-        <MdArrowLeft className="text-xl" />
+        <MdArrowLeft className="text-xl rotate-180" />
         <Link to="/buy" className=" ">
           Buy
         </Link>
-        <MdArrowLeft className="text-xl" />
-        {product && product.name}
+        <MdArrowLeft className="text-xl rotate-180" />
+
+        <p className="text-black font-medium">{product && product.name}</p>
       </div>
       <div>
         {product && (
-          <div className="flex  items-start flex-col md:flex-row justify-start  font-bold px-10  md:p-10 gap-5 md:gap-20">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mx-6  font-bold ">
             <div className="flex flex-col gap-4">
               <img
                 src={currentUrl || product.img_url}
@@ -202,7 +203,6 @@ const Property = () => {
                   await handleFav(userData, product.id, product);
                   setFav([...fav, product]);
                   setHeart(true);
-                  // }
                 }}
               >
                 <FaHeart

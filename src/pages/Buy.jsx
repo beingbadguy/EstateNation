@@ -91,12 +91,12 @@ const Buy = () => {
         ) : (
           ""
         )}
-        <div className="flex flex-wrap items-center justify-center md:items-center md:justify-center md:gap-10 mt-4 gap-6 mb-20 sm:mb-15">
+        <div className="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-4 justify-items-center items-center gap-4 mt-4 mx-4">
           {loading
             ? Array.from({ length: 6 }).map((_, index) => (
                 <div
                   key={index}
-                  className="rounded-t-2xl w-[150px] sm:w-[290px] md:w-[300px] relative text-sm md:text-md mb-32 mt-10"
+                  className="rounded-t-2xl  relative text-sm md:text-md  mb-32 mt-10"
                 >
                   <Skeleton height={300} width={300} className="rounded-t-xl" />
                   <div className="bg-slate-200 text-black font-bold p-3 rounded-b-xl">
@@ -114,12 +114,12 @@ const Buy = () => {
               ))
             : filteredData.map((item) => (
                 <div key={item.id}>
-                  <div className="rounded-t-2xl h-[300px] w-[150px] sm:w-[290px] md:w-[300px] relative text-sm md:text-md mb-32 mt-10">
+                  <div className="rounded-t-2xl   relative text-sm md:text-md mt-10">
                     <div className="rounded-t-xl">
                       <img
                         src={item.img_url}
                         alt=""
-                        className="h-[300px] w-[150px] sm:w-[290px] md:w-[300px] rounded-t-xl"
+                        className="h-[300px] w-[350px] sm:w-[290px] md:w-[300px] object-cover rounded-t-xl"
                       />
                     </div>
                     <div className="bg-slate-200 text-black font-bold p-3 rounded-b-xl">
@@ -151,7 +151,7 @@ const Buy = () => {
               ))}
         </div>
       </div>
-      <div className="ml-8 mt-0">
+      <div className="ml-8 mt-10">
         <h2 className="text-3xl font-bold">
           Discover a World of Possibilities 🔥
         </h2>
@@ -161,7 +161,7 @@ const Buy = () => {
           your vision of home
         </p>
       </div>
-      <div className="flex flex-wrap items-center justify-center md:items-center md:justify-center gap-2 md:gap-10 p-2 sm:p-10 mt-5">
+      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 justify-items-center items-center gap-4 mt-4 mx-3">
         {loading
           ? Array.from({ length: 6 }).map((_, index) => (
               <div
@@ -184,12 +184,12 @@ const Buy = () => {
             ))
           : property.map((item) => (
               <div key={item.id}>
-                <div className="rounded-t-2xl w-[150px] sm:w-[290px] md:w-[300px] relative text-sm md:text-md">
+                <div className="rounded-t-2xl relative text-sm md:text-md">
                   <div className="rounded-t-xl">
                     <img
                       src={item.img_url}
                       alt=""
-                      className="h-[300px] w-[150px] sm:w-[290px] md:w-[300px] rounded-t-xl"
+                      className="h-[200px] sm:h-[200px] w-[200px] sm:w-[290px] md:w-[300px] object-cover rounded-t-xl"
                     />
                   </div>
                   <div className="bg-slate-200 text-black font-bold p-3 rounded-b-xl">
